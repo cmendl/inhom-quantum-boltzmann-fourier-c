@@ -16,7 +16,7 @@ all: proj_main proj_test
 
 proj_main: proj_main_hom proj_main_inhom
 
-proj_test: proj_Cd_test proj_Cc_test proj_coll_step_test proj_I1_test proj_I2_test proj_I3_test proj_I4_test proj_lgwt_test proj_sim_step_test proj_slope_lim_test proj_slope_lim_test2
+proj_test: proj_Cd_test proj_Cc_test proj_coll_step_test proj_I1_test proj_I2_test proj_I2_test2 proj_I3_test proj_I4_test proj_lgwt_test proj_sim_step_test proj_slope_lim_test proj_slope_lim_test2
 
 
 proj_main_hom: ${SRCFILES} main_hom.o
@@ -40,6 +40,9 @@ proj_I1_test: ${SRCFILES} I1_test.o
 
 proj_I2_test: ${SRCFILES} I2_test.o
 	${CC} ${CCOPTS} ${EXTRALIBS} -o I2_test $?
+
+proj_I2_test2: ${SRCFILES} I2_test2.o
+	${CC} ${CCOPTS} ${EXTRALIBS} -o I2_test2 $?
 
 proj_I3_test: ${SRCFILES} I3_test.o
 	${CC} ${CCOPTS} ${EXTRALIBS} -o I3_test $?
@@ -73,6 +76,9 @@ I1_test.o: ../test/I1_test.c
 	${CC} -c -I../include ${CCOPTS} $<
 
 I2_test.o: ../test/I2_test.c
+	${CC} -c -I../include ${CCOPTS} $<
+
+I2_test2.o: ../test/I2_test2.c
 	${CC} -c -I../include ${CCOPTS} $<
 
 I3_test.o: ../test/I3_test.c
