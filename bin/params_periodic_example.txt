@@ -1,0 +1,11 @@
+J = 32
+M = 32
+L = 12
+R = 7.5
+h = 0.1
+numVol = 10
+dt = 0.008
+numsteps = 5
+boundaryType = periodic
+filenameWinit = ../data/W0_inhom.dat
+filenameWevolv = ../data/Wevolv_inhom_periodic.dat

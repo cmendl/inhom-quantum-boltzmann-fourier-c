@@ -1,0 +1,32 @@
+
+SRCFILES = collision.o finite_volume.o grid.o integrals.o quadrature.o simulation.o util.o
+
+CC = mpicc
+
+# set these with appropriate libs for your system
+EXTRALIBS = -lm -lfftw3
+
+# compiler options
+CCOPTS = -Wall -m64 -O3 -DUSE_MPI -DNDEBUG -Drestrict_=__restrict__
+
+
+all: proj_main_inhom proj_sim_step_test
+
+
+proj_main_inhom: ${SRCFILES} main_inhom.o
+	${CC} ${CCOPTS} ${EXTRALIBS} -o main_inhom_mpi $?
+
+proj_sim_step_test: ${SRCFILES} sim_step_test.o
+	${CC} ${CCOPTS} ${EXTRALIBS} -o sim_step_mpi_test $?
+
+
+sim_step_test.o: ../test/sim_step_test.c
+	${CC} -c -I../include ${CCOPTS} $<
+
+
+%.o: ../src/%.c
+	${CC} -c -I../include ${CCOPTS} $<
+
+
+clean:
+	rm *.o

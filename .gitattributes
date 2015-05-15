@@ -1,0 +1,2 @@
+# treat .dat files as binary
+*.dat binary
